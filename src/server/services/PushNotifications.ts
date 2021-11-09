@@ -1,8 +1,8 @@
-import { L1_RPC_PROVIDER } from '@app/features/AddressBook';
-import { getRecentGMs } from '@app/features/getRecentGMs';
-import prisma from '@server/helpers/prisma';
-import { providers } from 'ethers';
-import { Expo, ExpoPushMessage } from 'expo-server-sdk';
+import { L1_RPC_PROVIDER } from "@app/features/AddressBook";
+import { getRecentGMs } from "@app/features/getRecentGMs";
+import prisma from "@server/helpers/prisma";
+import { providers } from "ethers";
+import { Expo, ExpoPushMessage } from "expo-server-sdk";
 
 export const sendPushNotifications = async () => {
   let expo = new Expo();
@@ -15,19 +15,22 @@ export const sendPushNotifications = async () => {
           id: string;
           sender: { id: string };
           recipient: { id: string };
+          state: string;
         }) => ({
           to: (
             await prisma.pushTokens.findFirst({
-              where: { id: gm.recipient.id.toLowerCase() }
+              where: { id: gm.recipient.id.toLowerCase() },
             })
           )?.token,
-          sound: 'default',
-          title: '🌞 new gm 📸',
+          sound: "default",
+          title: "🌞 new gm 📸",
           body: `${
             (await l1Provider.lookupAddress(gm.sender.id)) ||
             `${gm.sender.id.slice(0, 6)}...${gm.sender.id.slice(-4)}`
-          } sent you a photo!`,
-          badge: 1
+          } ${
+            gm.state == "INITIATED" ? "sent you a gm!" : "replied to your gm"
+          }`,
+          badge: 1,
         })
       )
     )
