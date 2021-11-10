@@ -10,8 +10,8 @@ export const POLYGONSCAN_URL = isProd
   : 'https://mumbai.polygonscan.com/token/';
 
 export const GM_CAM_CONTRACT_ADDRESS = isProd
-  ? '0x1ffCbCA6f8Ff2982BfE32cc43093f87EeF809DBa'
-  : '0x43Ace20d56057bc7eC02f91f4B6444Bbb89591D2';
+  ? "0xe198976e8c7bffae677a2e893a291ca215adb4c9"
+  : "0x43Ace20d56057bc7eC02f91f4B6444Bbb89591D2";
 
 export const FORWARDER_CONTRACT_ADDRESS = isProd
   ? '0xB27342C75118ac7f47F15BD9E8406e324C8c9b5E'
