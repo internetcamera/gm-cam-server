@@ -27,7 +27,11 @@ const api: NextApiHandler = async (_req, res) => {
 
     if (toBurn.length > 0) {
       console.log("burning first 20 tokens", toBurn.slice(0, 20));
-      let tx = await gmCam.burnExpired(toBurn);
+      const nonce = await signer.getTransactionCount();
+
+      let tx = await gmCam.burnExpired(toBurn, {
+        nonce: nonce,
+      });
       console.log("burn tx", tx.hash);
     }
 
