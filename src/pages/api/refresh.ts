@@ -26,8 +26,9 @@ const api: NextApiHandler = async (_req, res) => {
     let toBurn = expiredGmIds.concat(expiredGmFilmIds);
 
     if (toBurn.length > 0) {
-      console.log('burning tokens', toBurn);
-      await gmCam.burnExpired(toBurn);
+      console.log("burning first 20 tokens", toBurn.slice(0, 20));
+      let tx = await gmCam.burnExpired(toBurn);
+      console.log("burn tx", tx.hash);
     }
 
     return res.json({ success: true });
