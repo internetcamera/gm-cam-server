@@ -16,9 +16,9 @@ const api: NextApiHandler = async (_req, res) => {
 
   await sendPushNotifications();
 
-  if (process.env.PRIVATE_KEY && GM_CAM_CONTRACT_ADDRESS) {
+  if (process.env.FORWARDER_PRIVATE_KEY && GM_CAM_CONTRACT_ADDRESS) {
     const signer = new ethers.Wallet(
-      process.env.PRIVATE_KEY,
+      process.env.FORWARDER_PRIVATE_KEY,
       getJsonRpcProvider()
     );
 
