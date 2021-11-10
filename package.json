@@ -6,7 +6,9 @@
   },
   "dependencies": {
     "@ethersproject/providers": "^5.5.0",
+    "@gimmixorg/use-wallet": "^0.0.30",
     "@prisma/client": "3.4.1",
+    "@walletconnect/web3-provider": "^1.6.6",
     "dayjs": "^1.10.7",
     "ethers": "^5.5.1",
     "expo-server-sdk": "^3.6.0",
@@ -15,6 +17,8 @@
     "next": "^11.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-ens-name": "^0.2.3",
+    "react-modal": "^3.14.3",
     "swr": "^1.0.1"
   },
   "devDependencies": {
